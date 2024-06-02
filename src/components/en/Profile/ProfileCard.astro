@@ -1,0 +1,22 @@
+---
+import { Image } from "astro:assets";
+import Menu from "./ProfileCardMenu.astro";
+import Footer from "./ProfileCardFooter.astro";
+const { PageID } = Astro.props;
+---
+
+<div class="profile-card card bg-base-100 shadow-xl p-4">
+  <div class="avatar px-6">
+    <Image
+      class="mask mask-circle"
+      format="webp"
+      width={300}
+      height={300}
+      src="/profile.jpeg"
+      alt="Profile image"
+    />
+  </div>
+  <div class="profile-info"></div>
+  <Menu PageID={PageID} />
+  <Footer />
+</div>

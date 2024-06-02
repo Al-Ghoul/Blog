@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../../layouts/en/BaseLayout.astro";
+import BaseCard from "../../components/en/Core/BaseCard.astro";
+import TimeLine from "../../components/page/TimeLine.astro";
+---
+
+<!doctype html>
+<BaseLayout PageID="about">
+  <BaseCard title="About Me">
+    <h1 id="h1">About Me</h1>
+    <hr />
+    <h2 id="h2">Brief introduction</h2>
+    <p>
+      I am a self-taught, highly motivated programmer and developer with a
+      passion for building innovative and user-friendly software. I have a
+      strong understanding of a variety of programming languages and
+      technologies, including Python, JavaScript, C++, Lua, Django, Pisma,
+      ReactJS, NextJS, ReactNative and Nix.
+    </p>
+    <p>
+      I am confident that I have the skills and experience necessary to be
+      successful in a software development role. I am a hard worker and I am
+      always willing to go the extra mile. I am also a creative thinker and I am
+      always looking for new ways to improve my skills and knowledge.
+    </p>
+    <h2 id="h2">TimeLine</h2>
+    <ul class="timeline timeline-vertical">
+      <li>
+        <hr class="bg-neutral-content" />
+        <TimeLine time="WAITING"> Initial.</TimeLine>
+      </li>
+    </ul>
+  </BaseCard>
+</BaseLayout>

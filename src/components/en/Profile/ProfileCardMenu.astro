@@ -1,0 +1,45 @@
+---
+const { PageID } = Astro.props;
+const activeClass = "on"; // For primary color replace with `active` class
+import { getRelativeLocaleUrl } from "astro:i18n";
+---
+
+<ul class="menu bg-base-100 w-full">
+  <li>
+    <a class="menu-item p-4" id="home" href={getRelativeLocaleUrl("en", "/")}
+      >Home</a
+    >
+  </li>
+  <li>
+    <a class="menu-item p-4" id="blog" href={getRelativeLocaleUrl("en", "blog")}
+      >Blog</a>
+  </li>
+  <li>
+    <a
+      class="menu-item p-4"
+      id="project"
+      href={getRelativeLocaleUrl("en", "project")}>Projects</a>
+  </li>
+  <li>
+    <a
+      class="menu-item p-4"
+      id="about"
+      href={getRelativeLocaleUrl("en", "about")}>About</a>
+  </li>
+</ul>
+
+<div class="self-center p-2">
+  <a href="https://ko-fi.com/W7W3X33WD" target="_blank">
+    <img
+      height="36"
+      style="border:0px;height:36px;"
+      src="https://storage.ko-fi.com/cdn/kofi2.png?v=3"
+      alt="Buy Me a Coffee at ko-fi.com"
+    />
+  </a>
+</div>
+
+<script define:vars={{ sideBarActiveItemID: PageID, activeClass: activeClass }}>
+  const activeItemElem = document.getElementById(sideBarActiveItemID);
+  activeItemElem && activeItemElem.classList.add(activeClass);
+</script>
