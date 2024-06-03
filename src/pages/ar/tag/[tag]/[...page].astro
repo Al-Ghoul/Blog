@@ -1,0 +1,33 @@
+---
+import TagsIndex from "../../../../components/Pages/main/TagsIndex.astro";
+import { getCollection } from "astro:content";
+import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
+
+export const getStaticPaths = (async function ({ paginate }) {
+  const all_posts = await getCollection("blog");
+
+  const all_tags = all_posts.flatMap((post) => {
+    return post.data.tags || [];
+  });
+
+  return all_tags.flatMap((tag) => {
+    const filtred_posts = all_posts
+      .filter((post) => {
+        return post.data.tags?.includes(tag);
+      })
+      .filter((post) => post.data.lang === Astro.currentLocale);
+
+    return paginate(filtred_posts, {
+      params: { tag },
+      pageSize: 5,
+    });
+  });
+}) as GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { page } = Astro.props as Props;
+const params = Astro.params;
+---
+
+<TagsIndex page={page} tag={params.tag as string}  langCode={Astro.currentLocale as "ar"}/>

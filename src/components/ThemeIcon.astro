@@ -34,19 +34,17 @@
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const setTheme = (theme) => {
+    const setTheme = (theme: string) => {
       document.documentElement.setAttribute("data-theme", theme);
       localStorage.setItem("theme", theme);
     };
 
-    // 初始化时检查是否存在本地存储的主题设置
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme) {
       setTheme(storedTheme);
     } else {
-      // 如果不存在本地存储的主题设置，则根据用户的偏好设置主题
       const userPreferredTheme = window.matchMedia(
-        "(prefers-color-scheme: dracula)"
+        "(prefers-color-scheme: dracula)",
       ).matches
         ? "dracula"
         : "winter";
@@ -54,27 +52,23 @@
     }
 
     const themeLabel1 = document.getElementById("themeLabel1");
-    const themeToggle1 = document.getElementById("themeToggle1");
-    const themeLabel2 = document.getElementById("themeLabel2");
-    const themeToggle2 = document.getElementById("themeToggle2");
+    const themeToggle1 = document.getElementById("themeToggle1") as HTMLInputElement;   const themeLabel2 = document.getElementById("themeLabel2");
+    const themeToggle2 = document.getElementById("themeToggle2") as HTMLInputElement;
 
-    // 同步按钮状态的函数
     const syncThemeToggle = () => {
       const currentTheme = localStorage.getItem("theme");
       const isChecked = currentTheme === "dracula";
-      themeToggle1.checked = isChecked;
-      themeToggle2.checked = isChecked;
+      themeToggle1!.checked = isChecked;
+      themeToggle2!.checked = isChecked;
     };
 
-    // 初始同步按钮状态
     syncThemeToggle();
 
-    themeLabel1.classList.add("swap");
-    themeLabel1.classList.add("swap-rotate");
-    themeLabel2.classList.add("swap");
-    themeLabel2.classList.add("swap-rotate");
+    themeLabel1?.classList.add("swap");
+    themeLabel1?.classList.add("swap-rotate");
+    themeLabel2?.classList.add("swap");
+    themeLabel2?.classList.add("swap-rotate");
 
-    // 按钮点击事件处理函数
     const handleToggleClick = () => {
       const currentTheme = localStorage.getItem("theme");
       const newTheme = currentTheme === "winter" ? "dracula" : "winter";
@@ -82,7 +76,7 @@
       syncThemeToggle();
     };
 
-    themeToggle1.addEventListener("click", handleToggleClick);
-    themeToggle2.addEventListener("click", handleToggleClick);
+    themeToggle1?.addEventListener("click", handleToggleClick);
+    themeToggle2?.addEventListener("click", handleToggleClick);
   });
 </script>

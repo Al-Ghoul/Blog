@@ -1,6 +1,16 @@
 ---
 import { Image } from "astro:assets";
 import dayjs from "dayjs";
+interface Props {
+  title: string;
+  image?: string;
+  desc: string;
+  pubDate: Date;
+  url: string;
+  badge?: string;
+  tags?: string[];
+  target?: string;
+}
 const {
   title,
   image,
@@ -11,6 +21,7 @@ const {
   tags,
   target = "_blank",
 } = Astro.props;
+
 const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
 const displayDate = dayjs(pubDate).format("ddd MMM DD YYYY");
 ---
@@ -33,7 +44,7 @@ const displayDate = dayjs(pubDate).format("ddd MMM DD YYYY");
   </div>
   <div class="envelope-card card bg-base-100">
     <div class="envelope-info px-6 py-3">
-      <a href={url} target={target} class="envelope-title">
+      <a href={"/" + url} target={target} class="envelope-title">
         {title}
       </a>
       <div class="info">{desc}</div>
@@ -47,7 +58,7 @@ const displayDate = dayjs(pubDate).format("ddd MMM DD YYYY");
               tags.map((tag) => (
                 <>
                   <a
-                    href={`${tag_url}/${tag}`}
+                    href={`/${tag_url}/${tag}`}
                     class="btn btn-xs btn-secondary"
                   >
                     {tag}

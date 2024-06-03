@@ -2,7 +2,14 @@
 import { Image } from "astro:assets";
 import Menu from "./ProfileCardMenu.astro";
 import Footer from "./ProfileCardFooter.astro";
-const { PageID } = Astro.props;
+import type { Locales } from "../../i18n/i18n-types";
+
+interface Props {
+  PageID: string;
+  langCode: Locales;
+}
+
+const { PageID, langCode } = Astro.props;
 ---
 
 <div class="profile-card card bg-base-100 shadow-xl p-4">
@@ -17,6 +24,6 @@ const { PageID } = Astro.props;
     />
   </div>
   <div class="profile-info"></div>
-  <Menu PageID={PageID} />
+  <Menu PageID={PageID} langCode={langCode} />
   <Footer />
 </div>

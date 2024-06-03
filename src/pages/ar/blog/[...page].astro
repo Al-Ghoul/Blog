@@ -3,16 +3,16 @@ import PostsIndex from "../../../components/Pages/main/PostsIndex.astro";
 import { getCollection } from "astro:content";
 import type { InferGetStaticPropsType, GetStaticPaths } from "astro";
 
+
 export const getStaticPaths = (async function ({ paginate }) {
   let posts = await getCollection("blog");
-  posts = posts.filter((post) => post.data.lang === "en");
+  posts = posts.filter((post) => post.data.lang === "ar");
   posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
   return paginate(posts, { pageSize: 5 });
-}) satisfies GetStaticPaths;
+}) as GetStaticPaths;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { page } = Astro.props as Props;
 ---
-<PostsIndex page={page} langCode={Astro.currentLocale as "en"}/>
-
+<PostsIndex page={page} langCode={Astro.currentLocale as "ar"} />

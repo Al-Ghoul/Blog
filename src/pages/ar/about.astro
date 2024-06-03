@@ -3,12 +3,12 @@ import AboutMain from "../../components/Pages/main/About.astro";
 import { i18nObject } from "../../i18n/i18n-util";
 import { loadLocaleAsync } from "../../i18n/i18n-util.async";
 
-await loadLocaleAsync(Astro.currentLocale as "en");
-const LL = i18nObject(Astro.currentLocale as "en");
+await loadLocaleAsync(Astro.currentLocale as "ar");
+const LL = i18nObject(Astro.currentLocale as "ar");
 ---
 
 <AboutMain
-  langCode={Astro.currentLocale as "en"}
+  langCode={Astro.currentLocale as "ar"}
   headerTitle={LL.ABOUT_PAGE_TITLE()}
   introTitle={LL.ABOUT_INTRO_TITLE()}
   firstLine={LL.ABOUT_FIRST_LINE()}

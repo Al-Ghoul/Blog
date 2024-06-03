@@ -4,21 +4,21 @@ import BaseCard from "../../components/Core/BaseCard.astro";
 import { loadLocaleAsync } from "../../i18n/i18n-util.async";
 import { i18nObject } from "../../i18n/i18n-util";
 
-await loadLocaleAsync(Astro.currentLocale as "en");
-const LL = i18nObject(Astro.currentLocale as "en");
+await loadLocaleAsync(Astro.currentLocale as "ar");
+const LL = i18nObject(Astro.currentLocale as "ar");
 ---
 
 <!doctype html>
-<BaseLayout PageID="home" langCode={Astro.currentLocale as "en"}>
+<BaseLayout PageID="home" langCode={Astro.currentLocale as "ar"}>
   <BaseCard
     image="/floweroflife.jpg"
-    title="Flower of Life"
-    langCode={Astro.currentLocale as "en"}
+    title="وردة الحياة"
+    langCode={Astro.currentLocale as "ar"}
   >
-    <h1 id="h1">{LL.WELCOME_MESSAGE()}</h1>
+    <h1 class="ml-auto" id="h1">{LL.WELCOME_MESSAGE()}</h1>
     <hr />
 
-    <p>
+    <p class="ml-auto">
       {LL.WELCOME_PARAGRAPH()}
     </p>
   </BaseCard>

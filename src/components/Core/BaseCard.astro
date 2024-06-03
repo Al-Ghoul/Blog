@@ -1,7 +1,18 @@
 ---
 import { Image } from "astro:assets";
-import License from "../../../components/License.astro";
+import License from "../../components/License.astro";
 import dayjs from "dayjs";
+
+export interface Props {
+  title: string;
+  image?: string;
+  pubDate?: Date;
+  badge?: string;
+  tags?: string[];
+  isBlog?: boolean;
+  url?: string;
+  langCode: string;
+}
 const {
   title,
   image,
@@ -9,13 +20,18 @@ const {
   badge,
   tags,
   isBlog,
+  langCode,
   url = decodeURIComponent(Astro.url.toString()),
 } = Astro.props;
 const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
 const displayDate = dayjs(pubDate).format("ddd MMM DD YYYY");
 ---
 
-<div class="back-card card bg-base-100 shadow-xl" title={title}>
+<div
+  dir={langCode === "en" ? "ltr" : "rtl"}
+  class="back-card card bg-base-100 shadow-xl"
+  title={title}
+>
   {
     image && (
       <Image
@@ -33,7 +49,6 @@ const displayDate = dayjs(pubDate).format("ddd MMM DD YYYY");
     {
       isBlog && (
         <>
-          <h1 id="h1">{title}</h1>
           <div class="info">
             {displayDate && (
               <div class="badge badge-neutral">{displayDate}</div>

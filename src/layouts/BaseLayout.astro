@@ -1,0 +1,58 @@
+---
+import "/node_modules/katex/dist/katex.min.css";
+import Profile from "../components/Profile/ProfileCard.astro";
+import BaseHead from "../components/Core/BaseHead.astro";
+import Footer from "../components/Core/Footer.astro";
+import ThemeIcon from "../components/ThemeIcon.astro";
+import { ViewTransitions } from "astro:transitions";
+import type { Locales } from "../i18n/i18n-types";
+import {  TRANSITION_API } from "../consts";
+import { loadLocaleAsync } from "../i18n/i18n-util.async";
+import { i18nObject } from "../i18n/i18n-util";
+import Header from "../components/Header.astro";
+
+interface Props {
+  image?: string;
+  site_description?: string;
+  includeSidebar?: boolean;
+  PageID: string;
+  langCode: Locales;
+}
+
+const {
+  image,
+  site_description,
+  includeSidebar = true,
+  PageID,
+  langCode,
+} = Astro.props;
+
+await loadLocaleAsync(langCode);
+const LL = i18nObject(langCode);
+---
+
+<html lang={langCode} class="bg-base-300">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@waline/client@v3/dist/waline.css"
+    />
+    <BaseHead title={LL.TITLE()} description={site_description || LL.DESCRIPTION()} image={image} />
+    {TRANSITION_API && <ViewTransitions />}
+  </head>
+  <body>
+    <script src="../scripts/copybutton.mjs"></script>
+    <Header langCode={langCode} />
+    <main class="main">
+      <div class="profile">
+        {includeSidebar && <Profile PageID={PageID} langCode={langCode} />}
+      </div>
+      <div class="background">
+        <slot />
+        <Footer />
+      </div>
+    </main>
+    <ThemeIcon />
+  </body>
+</html>

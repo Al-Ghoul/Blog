@@ -1,6 +1,6 @@
 ---
-import BaseLayout from "../../../layouts/en/BaseLayout.astro";
-import BaseCard from "../../../components/en/Core/BaseCard.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseCard from "../components/Core/BaseCard.astro";
 import { type CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -10,20 +10,22 @@ export async function getStaticPaths() {
     props: post,
   }));
 }
+
 type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content } = await post.render();
 ---
 
-<BaseLayout PageID="blog">
+<BaseLayout PageID="blog" langCode={post.data.lang}>
   <BaseCard
     title={post.data.title}
     image={post.data.image}
     pubDate={post.data.pubDate}
     badge={post.data.badge}
     tags={post.data.tags}
-    isBlog="true"
+    langCode={post.data.lang}
+    isBlog
   >
     <Content />
   </BaseCard>

@@ -1,8 +1,12 @@
 import { defineCollection, z } from "astro:content";
 
+enum Locales {
+  en = "en",
+  ar = "ar",
+}
+
 const blog = defineCollection({
   type: "content",
-  // Type-check frontmatter using a schema
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -10,6 +14,7 @@ const blog = defineCollection({
     updated: z.coerce.date().optional(),
     image: z.string().optional(),
     badge: z.string().optional(),
+    lang: z.nativeEnum(Locales),
     tags: z.array(z.string()).refine(
       (items) => new Set(items).size === items.length,
       {

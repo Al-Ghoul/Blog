@@ -5,3 +5,8 @@
 node_modules/
 
 .astro/
+dist/
+
+
+src/i18n/i18n-util.*
+src/i18n/formatters.ts

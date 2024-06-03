@@ -11,13 +11,14 @@
     "typesafe-i18n": "typesafe-i18n"
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.10",
+    "@astrojs/check": "^0.7.0",
     "@astrojs/mdx": "^2.3.0",
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.2",
     "@astrojs/tailwind": "^5.1.0",
-    "astro": "^4.6.1",
+    "astro": "^4.9.2",
     "dayjs": "^1.11.10",
+    "flag-icons": "^7.2.3",
     "katex": "^0.16.10",
     "prismjs": "^1.29.0",
     "rehype-katex": "^7.0.0",

@@ -6,7 +6,8 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 
 export default defineConfig({
-  site: "https://alghoul.dev",
+  site: "https://alghoul.github.io",
+  base: "blog",
   integrations: [mdx(), sitemap(), tailwind()],
   i18n: {
     defaultLocale: "en",

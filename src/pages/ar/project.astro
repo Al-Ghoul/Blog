@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BaseCard from "../../components/Core/BaseCard.astro";
+import { loadLocaleAsync } from "../../i18n/i18n-util.async";
+import { i18nObject } from "../../i18n/i18n-util";
+
+await loadLocaleAsync(Astro.currentLocale as "ar");
+const LL = i18nObject(Astro.currentLocale as "ar");
+---
+
+<!doctype html>
+<BaseLayout PageID="project" langCode={Astro.currentLocale as "ar"}>
+  <BaseCard title="Project" langCode={Astro.currentLocale as "ar"}>
+    <h1 class="ml-auto" id="h1">{LL.PROJECTS_PAGE_TITLE()}</h1>
+  </BaseCard>
+</BaseLayout>

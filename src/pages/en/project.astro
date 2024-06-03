@@ -1,11 +1,16 @@
 ---
-import BaseLayout from "../../layouts/en/BaseLayout.astro";
-import BaseCard from "../../components/en/Core/BaseCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BaseCard from "../../components/Core/BaseCard.astro";
+import { loadLocaleAsync } from "../../i18n/i18n-util.async";
+import { i18nObject } from "../../i18n/i18n-util";
+
+await loadLocaleAsync(Astro.currentLocale as "en");
+const LL = i18nObject(Astro.currentLocale as "en");
 ---
 
 <!doctype html>
-<BaseLayout PageID="project">
-  <BaseCard title="Project">
-    <h1 id="h1">Project</h1>
+<BaseLayout PageID="project" langCode={Astro.currentLocale as "en"}>
+  <BaseCard title="Project" langCode={Astro.currentLocale as "en"}>
+    <h1 id="h1">{LL.PROJECTS_PAGE_TITLE()}</h1>
   </BaseCard>
 </BaseLayout>

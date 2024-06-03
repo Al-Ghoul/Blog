@@ -6,6 +6,7 @@ image: '/home.webp'
 tags:
   - Makrdown
 badge: Guide
+lang: en
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing

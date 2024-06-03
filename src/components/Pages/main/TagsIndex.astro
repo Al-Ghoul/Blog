@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import BaseCard from "../../../components/Core/BaseCard.astro";
+import EnvelopeCard from "../../../components/EnvelopeCard.astro";
+import type { Locales } from "../../../i18n/i18n-types";
+
+interface Props {
+  tag: string;
+  page: any;
+  langCode: Locales;
+}
+
+const { tag, page, langCode } = Astro.props;
+---
+
+<BaseLayout PageID="blog" langCode={langCode}>
+  <BaseCard title="tag" langCode={langCode}>
+    <h1 id="h1">{"Tag: " + tag}</h1>
+  </BaseCard>
+  <br />
+  <div class="envelope-background">
+    {
+      // @ts-ignore
+      page.data.map((post) => (
+        <EnvelopeCard
+          title={post.data.title}
+          image={post.data.image}
+          desc={post.data.description}
+          url={post.slug}
+          pubDate={post.data.pubDate}
+          badge={post.data.badge}
+          tags={post.data.tags}
+          target="_self"
+        />
+      ))
+    }
+  </div>
+</BaseLayout>

@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import BaseCard from "../../../components/Core/BaseCard.astro";
+import TimeLine from "../../../components/Pages/TimeLine.astro";
+import type { Locales } from "../../../i18n/i18n-types";
+
+interface Props {
+  langCode: Locales;
+  headerTitle: string;
+  introTitle: string;
+  firstLine: string;
+  secondLine: string;
+}
+const { langCode, headerTitle, introTitle, firstLine, secondLine } =
+  Astro.props;
+---
+
+<!doctype html>
+<BaseLayout PageID="about" langCode={langCode}>
+  <BaseCard title="About Me" langCode={langCode}>
+    <h1 class={langCode === "en" ? "mr-auto" : "ml-auto"} id="h1">
+      {headerTitle}
+    </h1>
+    <hr />
+    <h2 class={langCode === "en" ? "mr-auto" : "ml-auto"} id="h2">
+      {introTitle}
+    </h2>
+    <p>{firstLine}</p>
+    <p>{secondLine}</p>
+    <h2 id="h2">TimeLine</h2>
+    <ul class="timeline timeline-vertical">
+      <li>
+        <hr class="bg-neutral-content" />
+        <TimeLine time="WAITING"> Initial.</TimeLine>
+      </li>
+    </ul>
+  </BaseCard>
+</BaseLayout>
