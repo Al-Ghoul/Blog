@@ -2,7 +2,7 @@
 title: 'Markdown Style Guide'
 description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
 pubDate: 'Jul 01 2024'
-image: '/blog/home.webp'
+image: '/Blog/home.webp'
 tags:
   - Makrdown
 badge: Guide
@@ -55,7 +55,7 @@ sapicia is sinveli squiatum, core et que aut hariosam ex eat.
 
 #### Output
 
-![blog placeholder](/blog/home.webp)
+![blog placeholder](/Blog/home.webp)
 
 ## Blockquotes
 
