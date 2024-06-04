@@ -15,7 +15,7 @@ export const getStaticPaths = (async function ({ paginate }) {
       .filter((post) => {
         return post.data.tags?.includes(tag);
       })
-      .filter((post) => post.data.lang === Astro.currentLocale);
+      .filter((post) => post.data.lang === "en");
 
     return paginate(filtred_posts, {
       params: { tag },
