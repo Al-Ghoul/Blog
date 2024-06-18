@@ -12,7 +12,7 @@ const { page, langCode } = Astro.props;
 ---
 
 <BaseLayout PageID="blog" langCode={langCode}>
-  <div class="envelope-background">
+<div class="envelope-background" dir={langCode === "ar" ? "rtl" : "ltr"}>
     {
       // @ts-ignore
       page.data.map((post) => (
@@ -24,6 +24,7 @@ const { page, langCode } = Astro.props;
           pubDate={post.data.pubDate}
           badge={post.data.badge}
           tags={post.data.tags}
+          lang={post.data.lang}
           target="_self"
         />
       ))

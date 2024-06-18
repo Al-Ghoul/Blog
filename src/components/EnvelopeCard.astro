@@ -10,6 +10,7 @@ interface Props {
   badge?: string;
   tags?: string[];
   target?: string;
+  lang: string;
 }
 const {
   title,
@@ -19,6 +20,7 @@ const {
   url,
   badge,
   tags,
+  lang = "ar",
   target = "_blank",
 } = Astro.props;
 
@@ -52,7 +54,7 @@ const displayDate = dayjs(pubDate).format("ddd MMM DD YYYY");
         {displayDate && <div class="badge badge-neutral">{displayDate}</div>}
         {badge && <div class="badge badge-primary">{badge}</div>}
         <div class="tags">
-          <code>Tag: </code>
+          <code>{lang === "ar" ? "البطاقات: " : "Tags: "}</code>
           {
             tags &&
               tags.map((tag) => (

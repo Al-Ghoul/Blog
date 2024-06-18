@@ -15,10 +15,10 @@ const { tag, page, langCode } = Astro.props;
 
 <BaseLayout PageID="blog" langCode={langCode}>
   <BaseCard title="tag" langCode={langCode}>
-    <h1 id="h1">{"Tag: " + tag}</h1>
+  <h1 id="h1">{(langCode === "en" ? "Tag: " : "بطاقة: ") + tag}</h1>
   </BaseCard>
   <br />
-  <div class="envelope-background">
+  <div class="envelope-background" dir={langCode === "ar" ? "rtl" : "ltr"}>
     {
       // @ts-ignore
       page.data.map((post) => (
@@ -26,10 +26,11 @@ const { tag, page, langCode } = Astro.props;
           title={post.data.title}
           image={post.data.image}
           desc={post.data.description}
-          url={post.slug}
+          url={"Blog/" + post.slug}
           pubDate={post.data.pubDate}
           badge={post.data.badge}
           tags={post.data.tags}
+          lang={post.data.lang}
           target="_self"
         />
       ))
